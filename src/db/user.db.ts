@@ -27,3 +27,21 @@ export const addUser = async (name: string, email: string, password: string,  ph
   }
 };
 
+
+export const checkUserCreds = async(user: any, password: string) =>{
+try{
+  const isMatch= await bcrypt.compare(password,user.password);
+  return isMatch
+ 
+}catch (err) {
+  throw new Error("error occoured");
+}
+  
+}
+
+
+ 
+
+
+
+                 

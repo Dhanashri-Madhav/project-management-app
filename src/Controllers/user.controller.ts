@@ -1,4 +1,4 @@
-import { addUserService } from "../services/user.services";
+import { addUserService, userLoginService } from "../services/user.services";
 import { RequestHandler } from "express";
 
 export const postAddUser: RequestHandler = async (req, res, next) => {
@@ -8,3 +8,12 @@ export const postAddUser: RequestHandler = async (req, res, next) => {
 
   return res.status(status).json({ data });
 };
+
+export const loginUser: RequestHandler = async(req, res, next) =>{
+  const {email,password} =req.body;
+  const {status, data} = await userLoginService(email,password);
+  return res.status(status).json({ data });
+
+
+
+}
