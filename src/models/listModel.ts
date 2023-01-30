@@ -1,5 +1,5 @@
 import { model, Schema, Document, Model } from 'mongoose';
-import {List} from "../utils/Types"
+ import {List} from "../interfaces/list.interface"
 
 
 

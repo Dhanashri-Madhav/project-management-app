@@ -15,7 +15,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 dbConnect()
 
 import userRoutes from "./routes/user.routes"
+import boardRoutes from "./routes/Board.routes"
 app.use("/user", userRoutes);
+app.use("/boards", boardRoutes)
 
 app.listen(PORT, () => {
   console.log(`Listening On PORT ${PORT}`);

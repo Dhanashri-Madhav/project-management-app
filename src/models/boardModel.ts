@@ -1,14 +1,14 @@
 import { model, Schema, Document, Model } from 'mongoose';
-// import {Board} from "../utils/Types"
+import {Board} from "../interfaces/boards.inetrfaces"
 
-const userSchema: Schema = new Schema({
+const boardSchema: Schema = new Schema({
   name: {
     type: String,
     required: true,
+    unique: true
   },  
   privacy: {
-    type: String,
-    required: true,
+    type: String, 
     default: "public"
   },
   lists:[{ 
@@ -20,7 +20,7 @@ const userSchema: Schema = new Schema({
 
 });
 
-// export  default  model<Board & Document>('Board', userSchema);
+export  default  model<Board & Document>('Board', boardSchema);
 
 
 

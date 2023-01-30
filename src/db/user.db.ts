@@ -3,7 +3,7 @@ import { userModel } from "../models/userModel";
 
 export const checkIfUserExists = async (email: String) => {
   try {
-    console.log(email)
+    
     const userExist =  await userModel.findOne({email});
     return userExist
 
@@ -14,12 +14,13 @@ export const checkIfUserExists = async (email: String) => {
   }
 };
 
-export const addUser = async (name: string, email: string, password: string,  phoneNO: number) => {
+export const addUser = async (name: string, email: string, password: string,  phoneNO: number, isAdmin: boolean) => {
   try {
     const hashedPassword = await bcrypt.hash(password, 12);
     const newUser = new userModel({
-      email,name,phoneNO,
+      email,name,phoneNO,isAdmin,
       password: hashedPassword,
+      
     });
     return newUser.save();
   } catch (err) {

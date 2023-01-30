@@ -11,7 +11,7 @@ export const ValidateJoi = (schema: ObjectSchema) => {
 
             next();
         } catch (error) {
-            console.error(error);
+           
 
             return res.status(422).json({msg: error });
         }
@@ -25,7 +25,8 @@ export const Schemas = {
         email: Joi.string()
             .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
             .required(),
-        phoneNO: Joi.number().integer().min(10 ** 9).max(10 ** 10 - 1).required()
+        phoneNO: Joi.number().integer().min(10 ** 9).max(10 ** 10 - 1).required(),
+        isAdmin: Joi.boolean()
        
        
     })
