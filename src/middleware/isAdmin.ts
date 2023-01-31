@@ -24,7 +24,7 @@ export const isAdmin = (req: Request, res: Response, next: NextFunction) => {
        
       
         if (!user || (user.isAdmin != true)) {
-          res.status(401).json({ msg: "Token is not valid" });
+          res.status(401).json({ msg: "Access denied" });
         }
          else {
           next();

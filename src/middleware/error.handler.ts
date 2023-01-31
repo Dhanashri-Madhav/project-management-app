@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction, ErrorRequestHandler } from "express";
-import { ClientError, ServerError, InputValidationError } from "../lib/error";
+import { ClientError, ServerError, InputValidationError, NoDataFoundError } from "../lib/error";
 
 
 export const errorClassifier = (err: Error) => {
@@ -8,6 +8,8 @@ export const errorClassifier = (err: Error) => {
       err instanceof Error ? err : new Error(String(err || defaultErrorMessage));
     error.message = err.message;
     switch (error.constructor) {
+      case NoDataFoundError: 
+         return { message: err.message, statusCode: 422 };
       case ClientError:
         return { message: err.message, statusCode: 400 };
       case ServerError:

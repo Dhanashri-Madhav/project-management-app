@@ -30,4 +30,11 @@ export class InputValidationError extends BaseError {
     }
 }
 
+export class NoDataFoundError extends BaseError {
+    constructor(message?: string) {
+        super(message);
+
+        Object.setPrototypeOf(this, NoDataFoundError.prototype);
+    }
+}
 
